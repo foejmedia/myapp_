@@ -1,0 +1,107 @@
+/* Signup Page Styles - Premium Dark Theme */
+@import url('../login/Login.css');
+/* Reuse core auth styles */
+
+.signup-page {
+  /* ... overrides if needed ... */
+}
+
+/* Specific Signup overrides */
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 0px;
+}
+
+.password-strength {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: var(--sn-gray-muted);
+}
+
+.strength-meter {
+  flex: 1;
+  height: 4px;
+  background: var(--sn-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.strength-segment {
+  height: 100%;
+  transition: all 0.3s;
+}
+
+.strength-segment.medium {
+  width: 60%;
+  background: var(--sn-green);
+  box-shadow: 0 0 10px var(--sn-green-glow);
+}
+
+.terms-checkbox {
+  margin: 20px 0 30px;
+}
+
+.terms-checkbox .checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.terms-checkbox a {
+  color: var(--sn-green);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.terms-checkbox a:hover {
+  text-decoration: underline;
+}
+
+.features-list {
+  position: relative;
+  z-index: 10;
+  color: var(--sn-white);
+  max-width: 90%;
+}
+
+.features-list h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  letter-spacing: -0.02em;
+}
+
+.features-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features-list li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: var(--sn-gray);
+}
+
+.features-list li i {
+  color: var(--sn-green);
+  font-size: 1.2rem;
+}
+
+/* Overwrite auth-image for signup */
+.auth-page .auth-container .auth-image {
+  background-image: url('https://images.unsplash.com/photo-1597933534024-1736d5d67951?auto=format&fit=crop&q=80&w=1000');
+}
+
+@media (max-width: 576px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

@@ -1,0 +1,110 @@
+/* =========================================================
+   NEARBY MOSQUES — /mosques
+   Emerald + warm ivory + restrained gold, light page like the
+   Namaz Tracker and Qibla pages. Results come from Google Maps.
+   ========================================================= */
+
+.mq {
+  --mq-green: #0b5d43;
+  --mq-green-2: #127a59;
+  --mq-green-soft: #e3f0e8;
+  --mq-ivory: #faf7f0;
+  --mq-card: #ffffff;
+  --mq-line: #e8e2d4;
+  --mq-gold: #c9a24a;
+  --mq-gold-soft: #f6ecd2;
+  --mq-ink: #17241d;
+  --mq-muted: #5d6a62;
+  --mq-red: #a2382c;
+  /* global headings read these; keep them dark on this light page even in site dark mode */
+  --text-primary: #17241d;
+  --text-secondary: #5d6a62;
+
+  min-height: 100vh;
+  background: var(--mq-ivory);
+  color: var(--mq-ink);
+  font-family: var(--mq-font, 'Manrope'), system-ui, sans-serif;
+}
+
+.mq h1, .mq p { margin: 0; }
+.mq button, .mq input { font-family: inherit; }
+.mq [lang='ar'] { font-family: var(--mq-font-ar, 'Amiri'), serif; }
+.mq .material-symbols-outlined { font-size: 20px; line-height: 1; }
+
+.mq-wrap { max-width: 1100px; margin: 0 auto; padding: 20px 16px 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px; }
+@media (min-width: 768px) { .mq-wrap { padding: 28px 24px 48px; } }
+
+/* ---------- header ---------- */
+.mq-ar { font-size: 22px; line-height: 1.2; color: var(--mq-gold); }
+.mq-head h1 { font-size: 28px; line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; color: var(--mq-ink); }
+@media (min-width: 768px) { .mq-head h1 { font-size: 34px; } }
+
+/* ---------- buttons ---------- */
+.mq-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-height: 44px; padding: 0 16px; box-sizing: border-box;
+  border-radius: 12px; border: 1px solid var(--mq-line); background: var(--mq-card);
+  color: var(--mq-ink) !important; font-weight: 700; font-size: 14px; text-decoration: none; cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.mq-btn:hover { border-color: var(--mq-green); }
+.mq-btn.primary { background: var(--mq-green); border-color: var(--mq-green); color: #ffffff !important; }
+.mq-btn.primary:hover { background: var(--mq-green-2); }
+.mq-btn.lg { min-height: 50px; padding: 0 22px; font-size: 15px; }
+.mq-btn.sm { min-height: 40px; padding: 0 12px; font-size: 13px; }
+.mq-btn:disabled { opacity: .6; cursor: default; }
+.mq-btn:focus-visible, .mq-search input:focus-visible { outline: 3px solid var(--mq-gold); outline-offset: 2px; }
+
+/* ---------- intro / loading ---------- */
+.mq-center { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: var(--mq-muted); font-weight: 600; }
+.mq-spinner { width: 34px; height: 34px; border-radius: 50%; border: 3px solid var(--mq-green-soft); border-top-color: var(--mq-green); animation: mq-spin .8s linear infinite; }
+.mq-spin { animation: mq-spin .9s linear infinite; }
+@keyframes mq-spin { to { transform: rotate(360deg); } }
+
+.mq-intro { max-width: 520px; margin: 0 auto; padding: 48px 16px 40px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+.mq-intro-icon { width: 72px; height: 72px; border-radius: 22px; display: grid; place-items: center; background: var(--mq-green); color: #ffffff; box-shadow: 0 0 0 6px var(--mq-gold-soft); }
+.mq-intro-icon .material-symbols-outlined { font-size: 40px; }
+.mq-intro h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
+.mq-intro-why { font-size: 15px; line-height: 1.6; color: var(--mq-muted); }
+.mq-or { margin-top: 8px !important; font-size: 13px; font-weight: 700; color: var(--mq-muted); }
+.mq-intro .mq-search { width: 100%; text-align: left; }
+.mq-alert { padding: 10px 14px; border-radius: 12px; background: #fbe9e6; border: 1px solid #efc2bb; color: var(--mq-red); font-size: 13px; font-weight: 600; line-height: 1.5; }
+
+/* ---------- location bar ---------- */
+.mq-locbar { display: flex; align-items: center; gap: 10px; padding: 10px 10px 10px 14px; border-radius: 14px; background: var(--mq-card); border: 1px solid var(--mq-line); }
+.mq-locbar > .material-symbols-outlined { color: var(--mq-green); }
+.mq-locbar-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.mq-locbar-text small { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--mq-muted); }
+.mq-locbar-text b { font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 400px) { .mq-hide-xs { display: none; } }
+
+/* ---------- place search ---------- */
+.mq-search { position: relative; display: flex; gap: 8px; }
+.mq-search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--mq-muted); pointer-events: none; }
+.mq-search input {
+  flex: 1; min-width: 0; box-sizing: border-box; min-height: 48px; padding: 0 14px 0 44px;
+  border-radius: 14px; border: 1px solid var(--mq-line); background: var(--mq-card);
+  color: var(--mq-ink); font-size: 15px;
+}
+.mq-search input::placeholder { color: #8b958e; }
+.mq-search .mq-btn { min-height: 48px; border-radius: 14px; }
+
+/* ---------- map ---------- */
+.mq-mapcol { height: max(380px, calc(100vh - 66px - 68px - 300px)); border-radius: 18px; overflow: hidden; border: 1px solid var(--mq-line); background: #e9e5da; }
+@media (min-width: 1024px) { .mq-mapcol { height: max(460px, calc(100vh - 66px - 320px)); } }
+.mq-map { display: block; width: 100%; height: 100%; border: 0; }
+
+.mq-prompt { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 32px 20px; text-align: center; border-radius: 18px; background: var(--mq-card); border: 1px dashed #d8cfba; }
+.mq-prompt > .material-symbols-outlined { font-size: 40px; color: var(--mq-gold); }
+.mq-prompt p { max-width: 460px; font-size: 15px; line-height: 1.55; }
+
+.mq-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+@media (max-width: 480px) { .mq-actions .mq-btn { flex: 1 1 100%; } }
+.mq-small { font-size: 13px; line-height: 1.55; color: var(--mq-muted); }
+
+.mq-foot { padding-top: 8px; border-top: 1px solid var(--mq-line); }
+.mq-foot p { font-size: 12px; line-height: 1.55; color: var(--mq-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mq-spinner, .mq-spin { animation: none; }
+}

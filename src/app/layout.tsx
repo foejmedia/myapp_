@@ -1,0 +1,161 @@
+// app/layout.tsx
+import type { Metadata } from 'next';
+
+import Footer from '@/components/Footer';
+import GlobalSidebar from '@/components/GlobalSidebar';
+import Navbar from '@/components/Navbar/Navbar';
+import { getOrganizationSchema, getWebsiteSchema } from '@/lib/seoSchemas';
+import { ThemeProvider } from '@/components/ThemeProvider';
+import './globals.css';
+import ClientWrapper from '@/components/ClientWrapper';
+import QuickAccessWidget from '@/components/QuickAccessWidget';
+import PrayerReminders from '@/components/PrayerReminders';
+
+export const metadata: Metadata = {
+  title: 'Learn Quran - Learn the Noble Quran | Interactive Quranic Education',
+  description: 'Embark on a transformative journey with the Holy Quran through our comprehensive learning platform. Learn Quran with interactive lessons, audio recitations, and guided study plans.',
+  keywords: 'Quran, Learn Quran, Quran learning, Islamic education, Tajweed, Tafsir, Hifz, Arabic, Muslim, Islamic studies',
+  authors: [{ name: 'Learn Quran Team' }],
+  creator: 'Learn Quran',
+  publisher: 'Learn Quran',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://quraniclearn.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Learn Quran - Learn the Noble Quran | Interactive Quranic Education',
+    description: 'Embark on a transformative journey with the Holy Quran through our comprehensive learning platform designed for spiritual growth.',
+    url: 'https://quraniclearn.com',
+    siteName: 'Learn Quran',
+    images: [
+      {
+        url: '/your-quran-logo.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Learn Quran - Learn the Noble Quran',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Learn Quran - Learn the Noble Quran',
+    description: 'Interactive Quranic learning platform for spiritual growth and understanding.',
+    images: ['/your-quran-logo.svg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.youtube.com" />
+        <link rel="preconnect" href="https://www.youtube-nocookie.com" />
+        <link rel="preconnect" href="https://i.ytimg.com" />
+        <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
+        <link rel="preconnect" href="https://static.doubleclick.net" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+          rel="stylesheet"
+        />
+        <link
+          rel="preload"
+          href="/fonts/quran/hafs/uthmanic_hafs/UthmanicHafs1Ver18.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="icon"
+          href="/favicon.ico"
+          type="image/x-icon"
+        />
+
+        {/* PWA Support */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#d97706" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Learn Quran" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+
+        {/* ✅ Theme init – runs before first paint to prevent flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var k='quran-learn-theme';var s=localStorage.getItem(k);var sys=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';var t=(s&&s!=='system')?s:sys;var r=document.documentElement;r.setAttribute('data-theme',t);if(t==='dark'){r.classList.add('dark');}else{r.classList.remove('dark');}}catch(e){}})();`,
+          }}
+        />
+
+        {/* ✅ JSON-LD Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getOrganizationSchema()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getWebsiteSchema()),
+          }}
+        />
+      </head>
+      <body>
+        <ThemeProvider>
+          <a href="#main-content" className="skip-link">Skip to main content</a>
+          <Navbar />
+          <div className="app-shell no-sidebar">
+            <GlobalSidebar />
+            <ClientWrapper>
+              <main id="main-content" style={{ flex: 1, minWidth: 0 }}>
+                {children}
+              </main>
+            </ClientWrapper>
+          </div>
+          <Footer />
+          <QuickAccessWidget />
+          <PrayerReminders />
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}

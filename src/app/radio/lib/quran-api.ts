@@ -1,0 +1,111 @@
+import { Reciter, Station } from './types';
+
+const API_BASE_URL = 'https://api.quran.com/api/v4';
+
+export interface QuranApiResponse<T> {
+    recitations?: any[];
+    chapters?: T[];
+}
+
+// Map specific curations of reciters to "Stations"
+const CURATED_STATIONS: Partial<Station>[] = [
+    {
+        id: 'mishary-rashid-alafasy',
+        title: 'Mishary Rashid Alafasy',
+        description: 'Emotional and clear recitation',
+        image: '/images/reciters/reciter-7.png', // Local generated portrait
+    },
+    {
+        id: 'abdulbaset-abdulsamad',
+        title: 'AbdulBaset AbdulSamad',
+        description: 'Mujawwad style, timeless',
+        image: '/images/reciters/reciter-1.png', // Local generated portrait
+    },
+    {
+        id: 'maher-al-muaiqly',
+        title: 'Maher Al Muaiqly',
+        description: 'Imam of Masjid Al-Haram',
+        image: '/images/reciters/reciter-12.png', // Local generated portrait
+    },
+    {
+        id: 'saud-al-shuraim',
+        title: 'Saud Al-Shuraim',
+        description: 'Powerful and fast paced',
+        image: '/images/reciters/reciter-10.png', // Local generated portrait
+    }
+];
+
+import stationsData from '../data/stations.json';
+
+export async function fetchQuranReciters(): Promise<Reciter[]> {
+    try {
+        // Use local stations data which has correct image URLs and IDs
+        return (stationsData as any[]).map((s: any, index: number) => ({
+            id: index + 1000, // Use high offset to ensure uniqueness
+            stationId: s.id, // Unique station ID string
+            originalReciterId: s.reciters && s.reciters.length > 0 ? parseInt(s.reciters[0], 10) : undefined, // Keep original for audio fetching
+            name: s.title,
+            style: s.subtitle,
+            imageUrl: s.imageUrl,
+        }));
+    } catch (error) {
+        console.error('Error fetching reciters:', error);
+        return [];
+    }
+}
+
+export async function fetchQuranStations(): Promise<Station[]> {
+    // Return curated list
+    return CURATED_STATIONS.map(s => ({
+        id: s.id!,
+        title: s.title!,
+        description: s.description!,
+        image: s.image!,
+        featured: true,
+        type: 'curated'
+    }));
+}
+
+export async function getAudioUrl(reciterId: number, chapterId: number): Promise<string> {
+    try {
+        const response = await fetch(`${API_BASE_URL}/chapter_recitations/${reciterId}/${chapterId}`);
+        if (!response.ok) throw new Error('Failed to fetch audio url');
+
+        const data = await response.json();
+        return data.audio_file.audio_url;
+    } catch (error) {
+        console.error('Error getting audio URL:', error);
+        // Fallback or rethrow
+        throw error;
+    }
+}
+
+// Fetch Chapters needed for mapping
+export async function fetchQuranChapters(): Promise<import('./types').Chapter[]> {
+    try {
+        const response = await fetch(`${API_BASE_URL}/chapters`, {
+            next: { revalidate: 86400 }
+        } as any);
+
+        if (!response.ok) throw new Error('Failed to fetch chapters');
+
+        const data = await response.json();
+        return data.chapters || [];
+    } catch (error) {
+        console.error('Error fetching chapters:', error);
+        return [];
+    }
+}
+
+export function mapReciterToStation(reciter: Reciter): Station {
+    return {
+        id: reciter.id.toString(),
+        title: reciter.name,
+        description: reciter.style || 'Murattal',
+        // Use reciter.imageUrl if available, else standard CDN pattern
+        image: reciter.imageUrl || `https://static.qurancdn.com/images/reciters/${reciter.id}/profile.png`,
+        featured: false,
+        type: 'reciter',
+        content: 'all',
+    };
+}

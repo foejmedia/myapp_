@@ -1,0 +1,638 @@
+/* ============================================================
+   COMING SOON — Warm Amber/Teal Theme
+   Matches app design system: amber (#f59e0b) + teal (#2dd4bf)
+   Dark-first, eye-friendly, Islamic manuscript feel
+   ============================================================ */
+
+/* ── Root ── */
+.cs-root {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-base, #0f0d0a);
+    font-family: var(--font-sans, 'Figtree', 'Inter', system-ui, sans-serif);
+    color: var(--text-primary, #faf6ed);
+}
+
+/* ── Animated Background ── */
+.cs-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.cs-cursor-glow {
+    position: absolute;
+    inset: 0;
+    transition: background 0.3s ease;
+    pointer-events: none;
+}
+
+/* Large ambient orbs — warm amber & teal */
+.cs-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.18;
+    animation: orbFloat 14s ease-in-out infinite;
+}
+
+.cs-orb-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, #f59e0b 0%, #d97706 40%, transparent 70%);
+    top: -220px;
+    left: -150px;
+    animation-delay: 0s;
+}
+
+.cs-orb-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #14b8a6 0%, #2dd4bf 40%, transparent 70%);
+    bottom: -180px;
+    right: -120px;
+    animation-delay: -7s;
+    opacity: 0.14;
+}
+
+.cs-orb-3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, #fbbf24 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -3.5s;
+    opacity: 0.1;
+}
+
+@keyframes orbFloat {
+    0%, 100% { transform: scale(1) translateY(0); }
+    33%      { transform: scale(1.06) translateY(-24px); }
+    66%      { transform: scale(0.96) translateY(16px); }
+}
+
+/* Islamic geometric diamond grid */
+.cs-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30L30 0z' fill='none' stroke='%23f59e0b' stroke-opacity='0.03' stroke-width='1'/%3E%3C/svg%3E");
+    opacity: 0.6;
+}
+
+/* Top gradient bar */
+.cs-top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, var(--brand-primary, #f59e0b) 30%, var(--accent-teal, #2dd4bf) 70%, transparent 100%);
+    z-index: 10;
+}
+
+/* ── Header ── */
+.cs-header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 28px;
+}
+
+.cs-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.cs-logo-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--brand-primary-soft, rgba(245, 158, 11, 0.12));
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: var(--radius-lg, 12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 24px rgba(245, 158, 11, 0.15);
+    font-size: 20px;
+    color: var(--brand-primary, #f59e0b);
+    transition: all 0.3s ease;
+}
+
+.cs-logo:hover .cs-logo-icon {
+    box-shadow: 0 0 32px rgba(245, 158, 11, 0.3);
+    transform: scale(1.05) rotate(8deg);
+}
+
+.cs-logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.cs-logo-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary, #faf6ed);
+    letter-spacing: -0.01em;
+}
+
+.cs-logo-sub {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brand-primary, #f59e0b);
+    margin-top: 3px;
+}
+
+.cs-live-badge {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 14px;
+    background: var(--brand-primary-soft, rgba(245, 158, 11, 0.1));
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--brand-primary, #f59e0b);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.cs-live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-primary, #f59e0b);
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+    animation: livePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.4; transform: scale(0.75); }
+}
+
+/* ── Main ── */
+.cs-main {
+    position: relative;
+    z-index: 10;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 20px 56px;
+    text-align: center;
+}
+
+/* Eyebrow label */
+.cs-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 18px;
+    background: var(--brand-primary-soft, rgba(245, 158, 11, 0.1));
+    border: 1px solid rgba(245, 158, 11, 0.18);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand-primary, #f59e0b);
+    margin-bottom: 28px;
+    animation: fadeInDown 0.8s ease both;
+}
+
+/* Hero heading */
+.cs-hero-title {
+    font-size: clamp(48px, 11vw, 100px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin: 0 0 8px;
+    background: linear-gradient(
+        160deg,
+        var(--text-primary, #faf6ed) 0%,
+        var(--brand-primary, #f59e0b) 50%,
+        var(--accent-teal, #2dd4bf) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInDown 0.8s ease 0.1s both;
+}
+
+.cs-hero-sub {
+    font-size: clamp(28px, 6vw, 56px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin: 0 0 32px;
+    color: var(--text-muted, #a89f8a);
+    opacity: 0.25;
+    animation: fadeInDown 0.8s ease 0.2s both;
+}
+
+/* Ornamental divider with diamond */
+.cs-divider {
+    width: 100%;
+    max-width: 480px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.25), transparent);
+    margin: 0 auto 28px;
+    animation: fadeIn 1s ease 0.3s both;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cs-divider-diamond {
+    position: absolute;
+    font-size: 10px;
+    color: var(--brand-primary, #f59e0b);
+    background: var(--bg-base, #0f0d0a);
+    padding: 0 12px;
+}
+
+.cs-tagline {
+    max-width: 560px;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--text-secondary, #d9c9a3);
+    margin: 0 auto 40px;
+    animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+/* ── Milestones ── */
+.cs-milestones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 48px;
+    animation: fadeInUp 0.8s ease 0.45s both;
+    flex-wrap: wrap;
+}
+
+.cs-milestone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.cs-milestone-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    background: var(--bg-card, #2a2420);
+    color: var(--text-muted, #a89f8a);
+    border: 2px solid var(--border-default, rgba(250, 246, 237, 0.08));
+    transition: all 0.4s ease;
+}
+
+.cs-milestone-done .cs-milestone-dot {
+    background: linear-gradient(135deg, var(--brand-primary, #f59e0b), var(--brand-primary-hover, #d97706));
+    color: var(--text-inverse, #1a1612);
+    border-color: var(--brand-primary, #f59e0b);
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.3);
+}
+
+.cs-milestone-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted, #a89f8a);
+    white-space: nowrap;
+}
+
+.cs-milestone-done .cs-milestone-label {
+    color: var(--brand-primary, #f59e0b);
+}
+
+.cs-milestone-line {
+    width: 48px;
+    height: 2px;
+    background: var(--border-default, rgba(250, 246, 237, 0.08));
+    margin: 0 8px;
+    margin-bottom: 24px;
+    border-radius: 2px;
+    transition: background 0.4s ease;
+}
+
+.cs-milestone-line-done {
+    background: linear-gradient(90deg, var(--brand-primary, #f59e0b), var(--accent-teal, #2dd4bf));
+}
+
+/* ── Feature cards ── */
+.cs-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 900px;
+    animation: fadeInUp 0.8s ease 0.6s both;
+}
+
+.cs-card {
+    background: var(--bg-card, #2a2420);
+    border: 1px solid var(--border-default, rgba(250, 246, 237, 0.08));
+    border-radius: var(--radius-xl, 16px);
+    padding: 28px 24px;
+    text-align: left;
+    box-shadow: var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.5));
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+.cs-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brand-primary, #f59e0b), var(--accent-teal, #2dd4bf));
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.cs-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.cs-card:hover,
+.cs-card-active {
+    border-color: rgba(245, 158, 11, 0.2);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.6)), 0 0 40px rgba(245, 158, 11, 0.08);
+}
+
+.cs-card:hover::before,
+.cs-card-active::before {
+    opacity: 1;
+}
+
+.cs-card:hover::after,
+.cs-card-active::after {
+    opacity: 1;
+}
+
+.cs-card-icon-wrap {
+    width: 48px;
+    height: 48px;
+    background: var(--brand-primary-soft, rgba(245, 158, 11, 0.1));
+    border: 1px solid rgba(245, 158, 11, 0.18);
+    border-radius: var(--radius-lg, 12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    font-size: 22px;
+    transition: all 0.4s ease;
+}
+
+.cs-card:hover .cs-card-icon-wrap {
+    background: rgba(245, 158, 11, 0.18);
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+}
+
+.cs-card-number {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--text-primary, #faf6ed);
+    opacity: 0.03;
+    line-height: 1;
+    pointer-events: none;
+    transition: opacity 0.4s;
+}
+
+.cs-card:hover .cs-card-number {
+    opacity: 0.06;
+}
+
+.cs-card h3 {
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary, #faf6ed);
+    letter-spacing: 0.04em;
+    margin: 0 0 8px;
+    text-transform: uppercase;
+}
+
+.cs-card p {
+    position: relative;
+    z-index: 1;
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--text-secondary, #d9c9a3);
+    margin: 0;
+    font-weight: 400;
+}
+
+/* ── Progress bar ── */
+.cs-progress-wrap {
+    width: 100%;
+    max-width: 480px;
+    margin: 48px auto 0;
+    animation: fadeInUp 0.8s ease 0.7s both;
+}
+
+.cs-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted, #a89f8a);
+    margin-bottom: 10px;
+}
+
+.cs-progress-pct {
+    color: var(--brand-primary, #f59e0b) !important;
+}
+
+.cs-progress-track {
+    width: 100%;
+    height: 6px;
+    background: var(--bg-card, #2a2420);
+    border: 1px solid var(--border-subtle, rgba(250, 246, 237, 0.05));
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.cs-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--brand-primary, #f59e0b), var(--accent-teal, #2dd4bf));
+    border-radius: 999px;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.45);
+    position: relative;
+    transition: width 2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cs-progress-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 2.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* ── Back CTA ── */
+.cs-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 36px;
+    padding: 12px 28px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-primary, #faf6ed);
+    background: var(--bg-card, #2a2420);
+    border: 1px solid var(--border-default, rgba(250, 246, 237, 0.08));
+    border-radius: 999px;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease 0.8s both;
+}
+
+.cs-cta:hover {
+    border-color: var(--brand-primary, #f59e0b);
+    color: var(--brand-primary, #f59e0b);
+    box-shadow: 0 0 24px rgba(245, 158, 11, 0.15);
+    transform: translateY(-2px);
+}
+
+/* ── Keyframe helpers ── */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .cs-cards {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 620px;
+    }
+    .cs-cards .cs-card:last-child {
+        grid-column: 1 / -1;
+    }
+    .cs-milestone-line {
+        width: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .cs-header {
+        padding: 16px 16px;
+    }
+    .cs-logo-text {
+        display: none;
+    }
+    .cs-main {
+        padding: 20px 16px 48px;
+    }
+    .cs-hero-title {
+        font-size: clamp(40px, 14vw, 64px);
+    }
+    .cs-hero-sub {
+        font-size: clamp(22px, 8vw, 36px);
+    }
+    .cs-cards {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+    .cs-cards .cs-card:last-child {
+        grid-column: auto;
+    }
+    .cs-card {
+        padding: 22px 20px;
+    }
+    .cs-milestones {
+        gap: 0;
+    }
+    .cs-milestone-line {
+        width: 20px;
+    }
+    .cs-milestone-dot {
+        width: 30px;
+        height: 30px;
+        font-size: 11px;
+    }
+    .cs-milestone-label {
+        font-size: 8px;
+    }
+    .cs-progress-wrap {
+        max-width: 100%;
+    }
+    .cs-tagline {
+        font-size: 15px;
+    }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .cs-orb,
+    .cs-live-dot,
+    .cs-progress-fill::after {
+        animation: none;
+    }
+    .cs-card,
+    .cs-cta,
+    .cs-logo-icon {
+        transition: none;
+    }
+}

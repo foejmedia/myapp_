@@ -1,0 +1,1003 @@
+/* =========================================================
+   DUAS & ADHKAR — /dua
+   Single page scroll (no inner scroll areas).
+   ========================================================= */
+
+.du {
+  --du-paper: #fbf8f1;
+  --du-card: #ffffff;
+  --du-line: rgba(15, 23, 42, 0.08);
+  --du-ink: #0f172a;
+  --du-muted: #64748b;
+  --du-gold: #c8963e;
+  --du-cream: #f0e3c4;
+  --du-emerald: #13705a;
+  --du-emerald-deep: #0a4a3b;
+  --du-arabic: #10261f;
+  min-height: 100vh;
+  color: var(--du-ink);
+  background: var(--du-paper);
+  background-image: radial-gradient(circle at 2px 2px, rgba(var(--brand-rgb), 0.05) 1px, transparent 0);
+  background-size: 26px 26px;
+  font-family: 'Figtree', 'Lexend', system-ui, sans-serif;
+}
+
+.dark .du,
+[data-theme='dark'] .du {
+  --du-paper: #0f1714;
+  --du-card: #15201b;
+  --du-line: rgba(255, 255, 255, 0.08);
+  --du-ink: #e8efe9;
+  --du-muted: #93a59b;
+  --du-arabic: #f3eedf;
+}
+
+.du .font-arabic {
+  font-family: 'UthmanicHafsText', serif;
+}
+
+.du .material-symbols-outlined {
+  line-height: 1;
+}
+
+.du-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 56px;
+}
+
+.du-wrap.narrow {
+  max-width: 900px;
+  padding-top: 20px;
+  scroll-margin-top: 220px;
+}
+
+/* ── Hero ───────────────────────────────────────────────── */
+.du-hero {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  align-items: end;
+  gap: 28px;
+  margin-bottom: 26px;
+}
+
+.du-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--du-muted);
+}
+
+.du-kicker .font-arabic {
+  font-size: 19px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--du-gold);
+}
+
+.du-kicker-sep {
+  width: 18px;
+  height: 1px;
+  background: var(--du-gold);
+}
+
+.du-hero h1 {
+  margin: 0 0 10px;
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(30px, 4.4vw, 46px);
+  font-weight: 500;
+  line-height: 1.12;
+}
+
+.du-hero h1 em {
+  font-style: italic;
+  color: var(--brand-primary);
+}
+
+.du-sub {
+  margin: 0 0 18px;
+  max-width: 580px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--du-muted);
+}
+
+.du-hero-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 620px;
+  height: 54px;
+  padding: 0 6px 0 16px;
+  border-radius: 16px;
+  border: 1px solid var(--du-line);
+  background: var(--du-card);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+}
+
+.du-hero-search:focus-within {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 4px rgba(var(--brand-rgb), 0.12);
+}
+
+.du-hero-search .material-symbols-outlined {
+  font-size: 22px;
+  color: var(--du-muted);
+}
+
+.du-hero-search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--du-ink);
+}
+
+.du-hero-search button {
+  height: 42px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 12px;
+  background: var(--brand-primary);
+  color: #fff;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.du-hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.du-quick {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid var(--du-line);
+  background: var(--du-card);
+  color: var(--du-ink);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.du-quick:hover {
+  border-color: rgba(var(--brand-rgb), 0.45);
+  transform: translateY(-2px);
+}
+
+.du-quick > .material-symbols-outlined {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  font-size: 22px;
+  color: var(--brand-primary);
+  background: rgba(var(--brand-rgb), 0.1);
+}
+
+.du-quick > .material-symbols-outlined.fav {
+  color: #e11d48;
+  background: rgba(225, 29, 72, 0.1);
+  font-variation-settings: 'FILL' 1;
+}
+
+.du-quick b {
+  display: block;
+  font-size: 15px;
+}
+
+.du-quick small {
+  font-size: 12px;
+  color: var(--du-muted);
+}
+
+/* ── Dua of the day ─────────────────────────────────────── */
+.du-today {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 32px;
+  padding: 24px 28px 20px;
+  border-radius: 24px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.16), transparent 55%),
+    linear-gradient(150deg, var(--du-emerald), var(--du-emerald-deep));
+  box-shadow: 0 18px 40px rgba(10, 74, 59, 0.25);
+}
+
+.du-today::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -90px;
+  width: 360px;
+  height: 260px;
+  border-radius: 180px 180px 0 0;
+  border: 1px solid rgba(240, 227, 196, 0.12);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.du-today-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.du-today-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(240, 227, 196, 0.85);
+}
+
+.du-today-label .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.du-today-title {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.du-today .du-ar {
+  position: relative;
+  text-align: center;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff;
+}
+
+.du-today .du-ar .du-end {
+  color: var(--du-cream);
+  -webkit-text-fill-color: var(--du-cream);
+}
+
+.du-today-tr {
+  position: relative;
+  max-width: 720px;
+  margin: 6px auto 16px;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 16.5px;
+  font-style: italic;
+  line-height: 1.65;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.du-today-foot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 12.5px;
+  color: rgba(240, 227, 196, 0.85);
+}
+
+/* ── Category grid ──────────────────────────────────────── */
+.du-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.du-kicker-ar {
+  margin: 0 0 2px;
+  font-size: 16px;
+  color: var(--du-gold);
+}
+
+.du-section-head h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.du-count-note {
+  font-size: 13px;
+  color: var(--du-muted);
+}
+
+.du-cats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.du-cat {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px 14px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--du-line);
+  background: var(--du-card);
+  color: var(--du-ink);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  animation: du-in 0.45s ease both;
+}
+
+@keyframes du-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.du-cat:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--c) 45%, transparent);
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--c) 16%, transparent);
+}
+
+.du-cat-img {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 64px;
+  padding-top: 4px;
+  border-radius: 29px 29px 12px 12px;
+  background: color-mix(in srgb, var(--c) 14%, var(--du-card));
+  border: 1px solid color-mix(in srgb, var(--c) 25%, transparent);
+}
+
+.du-cat-img img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.du-cat:hover .du-cat-img img {
+  transform: scale(1.1) rotate(-4deg);
+}
+
+.du-cat-img .material-symbols-outlined {
+  font-size: 26px;
+  color: var(--c);
+}
+
+.du-cat-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.du-cat-text b {
+  font-size: 15.5px;
+  font-weight: 800;
+}
+
+.du-cat-text small {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--du-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.du-cat-count {
+  flex-shrink: 0;
+  min-width: 30px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  color: var(--c);
+  background: color-mix(in srgb, var(--c) 12%, transparent);
+}
+
+/* ── Sticky bar (list view) ─────────────────────────────── */
+.du-bar {
+  position: sticky;
+  top: var(--qcnav-h, 66px);
+  z-index: 40;
+  padding: 10px 20px 8px;
+  background: color-mix(in srgb, var(--du-card) 90%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--du-line);
+}
+
+.du-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 1100px;
+  margin: 0 auto 8px;
+}
+
+.du-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background: none;
+  color: var(--du-muted);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.du-icon:hover {
+  color: var(--du-ink);
+  background: color-mix(in srgb, var(--du-ink) 6%, transparent);
+}
+
+.du-icon.fav.on {
+  color: #e11d48;
+}
+
+.du-icon.fav.on .material-symbols-outlined {
+  font-variation-settings: 'FILL' 1;
+  animation: du-heart 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes du-heart {
+  40% {
+    transform: scale(1.3);
+  }
+}
+
+.du-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 42px;
+  padding: 0 10px;
+  border-radius: 12px;
+  border: 1px solid var(--du-line);
+  background: var(--du-card);
+}
+
+.du-search:focus-within {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(var(--brand-rgb), 0.12);
+}
+
+.du-search .material-symbols-outlined {
+  font-size: 20px;
+  color: var(--du-muted);
+}
+
+.du-search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--du-ink);
+}
+
+.du-search button {
+  display: flex;
+  padding: 2px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.du-seg {
+  display: inline-flex;
+  gap: 2px;
+  height: 42px;
+  padding: 3px;
+  border-radius: 12px;
+  border: 1px solid var(--du-line);
+  background: var(--du-card);
+}
+
+.du-seg button {
+  padding: 0 12px;
+  border: none;
+  border-radius: 9px;
+  background: none;
+  color: var(--du-muted);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.du-seg button.on {
+  color: #fff;
+  background: var(--brand-primary);
+}
+
+/* category chips — swipeable row, scrollbar hidden */
+.du-chips {
+  display: flex;
+  gap: 6px;
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 2px 0 4px;
+}
+
+.du-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.du-chip {
+  --c: var(--brand-primary);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--du-line);
+  background: var(--du-card);
+  color: var(--du-ink);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.du-chip .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.du-chip small {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--du-muted);
+}
+
+.du-chip:hover {
+  border-color: var(--c);
+}
+
+.du-chip.on {
+  color: #fff;
+  border-color: transparent;
+  background: var(--c);
+}
+
+.du-chip.on small {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── List ───────────────────────────────────────────────── */
+.du-list-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.du-list-head h2 {
+  margin: 0;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.du-list-head p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--du-muted);
+}
+
+.du-display {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.du-display > button,
+.du-size button {
+  height: 32px;
+  padding: 0 11px;
+  border-radius: 999px;
+  border: 1px solid var(--du-line);
+  background: var(--du-card);
+  color: var(--du-muted);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.du-display > button.on {
+  color: var(--brand-primary);
+  border-color: rgba(var(--brand-rgb), 0.45);
+  background: rgba(var(--brand-rgb), 0.08);
+}
+
+.du-size {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.du-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Dua card ───────────────────────────────────────────── */
+.du-card {
+  --c: var(--brand-primary);
+  position: relative;
+  padding: 18px 22px 14px;
+  border-radius: 22px;
+  border: 1px solid var(--du-line);
+  background: var(--du-card);
+  scroll-margin-top: 200px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  animation: du-in 0.4s ease both;
+}
+
+.du-card:hover {
+  border-color: color-mix(in srgb, var(--c) 35%, transparent);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+}
+
+.du-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.du-num {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 40px;
+  padding-top: 3px;
+  border-radius: 18px 18px 8px 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--c);
+  background: color-mix(in srgb, var(--c) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c) 28%, transparent);
+}
+
+.du-card-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.du-card-title h3 {
+  margin: 0 0 4px;
+  font-size: 16.5px;
+  font-weight: 800;
+}
+
+.du-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.du-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.du-tag .material-symbols-outlined {
+  font-size: 13px;
+}
+
+.du-tag.cat {
+  color: var(--c);
+  background: color-mix(in srgb, var(--c) 10%, transparent);
+}
+
+.du-tag.src.quran {
+  color: var(--brand-primary);
+  background: rgba(var(--brand-rgb), 0.1);
+}
+
+.du-tag.src.hadith {
+  color: #9a6b1f;
+  background: rgba(200, 150, 62, 0.13);
+}
+
+/* Arabic panel */
+.du-ar-wrap {
+  margin-bottom: 12px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--c) 5%, var(--du-paper));
+  border: 1px solid color-mix(in srgb, var(--c) 14%, transparent);
+}
+
+.du-ar {
+  margin: 0;
+  font-family: 'UthmanicHafsText', serif;
+  font-feature-settings: 'liga' 1, 'calt' 1, 'mark' 1, 'mkmk' 1;
+  line-height: 2.05;
+  text-align: right;
+  color: var(--du-arabic) !important;
+  -webkit-text-fill-color: var(--du-arabic);
+}
+
+.du-ar.is-qcf {
+  font-feature-settings: normal;
+}
+
+.du-end {
+  color: var(--brand-primary);
+  -webkit-text-fill-color: var(--brand-primary);
+}
+
+.du-translit {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--du-muted);
+}
+
+.du-translation {
+  margin: 0;
+  padding-left: 12px;
+  border-left: 2px solid color-mix(in srgb, var(--c) 50%, transparent);
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--du-ink) 85%, transparent);
+}
+
+.du-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--du-line);
+}
+
+.du-ref {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--du-muted);
+}
+
+.du-ref .material-symbols-outlined {
+  font-size: 16px;
+  color: var(--du-gold);
+}
+
+a.du-ref:hover {
+  color: var(--brand-primary);
+}
+
+.du-actions {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.du-act,
+.du-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: none;
+  background: none;
+  color: var(--du-muted);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.du-act .material-symbols-outlined,
+.du-count .material-symbols-outlined {
+  font-size: 17px;
+}
+
+.du-act:hover,
+.du-count:hover {
+  color: var(--c);
+  background: color-mix(in srgb, var(--c) 8%, transparent);
+}
+
+.du-count.on {
+  color: #fff;
+  background: var(--c);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Buttons / empty ────────────────────────────────────── */
+.du-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid var(--du-line);
+  background: var(--du-card);
+  color: var(--du-ink);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.du-btn .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.du-btn.primary {
+  color: #fff;
+  border-color: transparent;
+  background: var(--brand-primary);
+}
+
+.du-btn.light {
+  height: 36px;
+  color: var(--du-emerald-deep);
+  border-color: transparent;
+  background: var(--du-cream);
+}
+
+.du-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 56px 16px;
+  text-align: center;
+  color: var(--du-muted);
+}
+
+.du-empty .material-symbols-outlined {
+  font-size: 42px;
+  color: var(--du-gold);
+}
+
+.du-empty h3 {
+  margin: 4px 0 0;
+  font-size: 18px;
+  color: var(--du-ink);
+}
+
+.du-empty p {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .du-hero {
+    grid-template-columns: 1fr;
+  }
+  .du-hero-actions {
+    flex-direction: row;
+  }
+  .du-quick {
+    flex: 1;
+  }
+  .du-cats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .du-wrap {
+    padding: 22px 14px 90px;
+  }
+  .du-cats {
+    grid-template-columns: 1fr;
+  }
+  .du-hero-search {
+    height: auto;
+    flex-wrap: wrap;
+    padding: 8px 8px 8px 14px;
+  }
+  .du-hero-search button {
+    width: 100%;
+  }
+  .du-today {
+    padding: 20px 18px 16px;
+  }
+  .du-bar {
+    padding: 8px 12px 6px;
+  }
+  .du-bar-row {
+    flex-wrap: wrap;
+  }
+  .du-search {
+    flex: 1 1 calc(100% - 50px);
+  }
+  .du-seg {
+    width: 100%;
+  }
+  .du-seg button {
+    flex: 1;
+  }
+  .du-card {
+    padding: 14px 14px 12px;
+  }
+  .du-ar-wrap {
+    padding: 12px 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .du * {
+    animation: none !important;
+  }
+}

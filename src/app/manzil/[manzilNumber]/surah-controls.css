@@ -1,0 +1,34 @@
+.surah-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.play-all-btn {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.play-all-btn:hover {
+  background: rgba(245, 158, 11, 0.25);
+  border-color: #f59e0b;
+}
+
+.play-all-btn.playing {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.play-all-btn.playing:hover {
+  background: rgba(239, 68, 68, 0.25);
+}

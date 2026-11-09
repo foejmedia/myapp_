@@ -1,0 +1,513 @@
+﻿/* ============================================================
+   FOOTER — Premium Green/Islamic Theme
+   ============================================================ */
+
+/* ── Root ── */
+.ftr {
+  position: relative;
+  background: var(--bg-base);
+  border-top: 1px solid var(--border-default);
+  overflow: hidden;
+  font-family: 'Figtree', 'Lexend', sans-serif;
+}
+
+/* ── Ambient glow ── */
+.ftr-glow {
+  position: absolute;
+  bottom: -180px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(200, 169, 107, 0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ── Arabic verse banner ── */
+.ftr-verse-bar {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 48px 24px 40px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.12), transparent 60%),
+    linear-gradient(160deg, #13705a 0%, #0c5444 55%, #093d32 100%);
+  border-top: 1px solid rgba(217, 181, 107, 0.45);
+  border-bottom: 1px solid rgba(217, 181, 107, 0.25);
+}
+
+/* large faint mihrab arch behind the verse */
+.ftr-verse-arch {
+  position: absolute;
+  left: 50%;
+  bottom: -40px;
+  width: min(560px, 90vw);
+  height: 320px;
+  border-radius: 280px 280px 0 0;
+  border: 1px solid rgba(240, 227, 196, 0.14);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.ftr-verse-arch::before {
+  content: '';
+  position: absolute;
+  inset: 18px 18px 0;
+  border-radius: 260px 260px 0 0;
+  border: 1px solid rgba(240, 227, 196, 0.08);
+}
+
+.ftr-verse-kicker {
+  position: relative;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240, 227, 196, 0.7);
+}
+
+.ftr-verse-ar {
+  position: relative;
+  font-family: "UthmanicHafs", serif;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.8;
+  color: #f0e3c4;
+}
+
+.ftr-verse-rule {
+  position: relative;
+  width: 140px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d9b56b, transparent);
+}
+
+.ftr-verse-rule::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  background: #d9b56b;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ftr-verse-en {
+  position: relative;
+  max-width: 620px;
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(14px, 1.7vw, 17px);
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.ftr-verse-ref {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(240, 227, 196, 0.35);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #f0e3c4;
+  transition: background 0.2s ease, gap 0.2s ease;
+}
+
+.ftr-verse-ref:hover {
+  gap: 10px;
+  background: rgba(240, 227, 196, 0.1);
+}
+
+.ftr-verse-ref .material-symbols-outlined {
+  font-size: 16px;
+}
+
+/* ── Container ── */
+.ftr-container {
+  max-width: 1550px;
+  width: 94%;
+  margin: 0 auto;
+  padding: 48px 24px 32px;
+  position: relative;
+}
+
+
+
+/* ── Main 5-column grid ── */
+.ftr-main {
+  display: grid;
+  /* 4 columns: Brand, Explore, Learn, WhatsApp CTA */
+  grid-template-columns: minmax(320px, 2.5fr) 1fr 1fr minmax(280px, 2fr);
+  gap: 56px;
+  margin-bottom: 48px;
+  align-items: flex-start;
+}
+
+/* Brand column */
+.ftr-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ftr-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.ftr-logo-icon {
+  font-size: 28px;
+  color: #C8A96B;
+  filter: drop-shadow(0 0 10px rgba(200, 169, 107, 0.35));
+}
+
+.ftr-logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.ftr-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.ftr-socials {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.ftr-social {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.18s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ftr-social:hover {
+  background: #C8A96B;
+  border-color: #C8A96B;
+  color: var(--text-inverse);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(200, 169, 107, 0.3);
+}
+
+/* Nav columns */
+.ftr-col-heading {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #f59e0b;
+  margin: 0 0 16px;
+}
+
+.ftr-col-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ftr-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s, gap 0.15s;
+}
+
+.ftr-link-arrow {
+  font-size: 15px;
+  color: #C8A96B;
+  opacity: 0;
+  transition: opacity 0.15s;
+  font-weight: 700;
+}
+
+.ftr-link:hover {
+  color: var(--text-primary);
+  gap: 8px;
+}
+
+.ftr-link:hover .ftr-link-arrow {
+  opacity: 1;
+}
+
+/* WhatsApp CTA card */
+.ftr-cta-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: 16px;
+  padding: 24px 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  min-width: 180px;
+}
+
+.ftr-cta-top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0F3D2E, #C8A96B);
+}
+
+.ftr-cta-heading {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 6px;
+}
+
+.ftr-cta-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 20px;
+  line-height: 1.6;
+}
+
+.ftr-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(37, 211, 102, 0.08);
+  border: 1px solid rgba(37, 211, 102, 0.25);
+  border-radius: 10px;
+  color: #25D366;
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  width: 100%;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.ftr-wa-btn:hover {
+  background: #25D366;
+  color: white;
+  border-color: #25D366;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
+}
+
+/* ── Divider ── */
+.ftr-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-default) 20%, var(--border-default) 80%, transparent);
+  margin-bottom: 24px;
+}
+
+/* ── Bottom bar ── */
+.ftr-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ftr-copy {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.ftr-copy strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.ftr-badges {
+  display: flex;
+  gap: 8px;
+}
+
+.ftr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  background: rgba(200, 169, 107, 0.12);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #C8A96B;
+  border: 1px solid rgba(200, 169, 107, 0.2);
+}
+
+.ftr-legal-links {
+  display: flex;
+  gap: 16px;
+}
+
+.ftr-legal-links a {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.ftr-legal-links a:hover {
+  color: #C8A96B;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1250px) {
+  .ftr-main {
+    /* Switch to 2x2 grid for better use of space on tablet/small laptop */
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .ftr-brand {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+  
+  .ftr-cta-card {
+    grid-column: span 1;
+    min-width: unset;
+  }
+  .ftr-desc {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ftr-main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ftr-brand {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 520px) {
+  .ftr-container {
+    padding: 32px 16px 24px;
+  }
+
+  .ftr-main {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .ftr-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ftr-badges {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .ftr-legal-links {
+    justify-content: center;
+  }
+}
+
+/* ── Dark mode ── */
+.dark .ftr {
+  background: #0d1b12;
+  border-top-color: #1e3a2a;
+}
+
+.dark .ftr-glow {
+  opacity: 0.12;
+}
+
+.dark .ftr-stat {
+  background: #111f16;
+  border-color: #1e3a2a;
+}
+
+.dark .ftr-logo-text {
+  color: #e2e8e5;
+}
+
+.dark .ftr-desc {
+  color: #94a3b8;
+}
+
+.dark .ftr-social {
+  background: #111f16;
+  border-color: #1e3a2a;
+  color: #94a3b8;
+}
+
+.dark .ftr-social:hover {
+  background: #f59e0b;
+  border-color: #f59e0b;
+  color: white;
+}
+
+.dark .ftr-link {
+  color: #64748b;
+}
+
+.dark .ftr-link:hover {
+  color: #e2e8e5;
+}
+
+.dark .ftr-cta-card {
+  background: #111f16;
+  border-color: #1e3a2a;
+}
+
+.dark .ftr-cta-heading {
+  color: #e2e8e5;
+}
+
+.dark .ftr-divider {
+  background: linear-gradient(90deg, transparent, #1e3a2a 20%, #1e3a2a 80%, transparent);
+}
+
+.dark .ftr-copy {
+  color: #64748b;
+}
+
+.dark .ftr-copy strong {
+  color: #e2e8e5;
+}
+
+.dark .ftr-legal-links a {
+  color: #64748b;
+}
+
+.dark .ftr-legal-links a:hover {
+  color: #f59e0b;
+}

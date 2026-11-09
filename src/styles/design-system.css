@@ -1,0 +1,358 @@
+/* =====================================================
+   QURAN LEARN - Design System v2.0
+   Warm, Eye-Friendly Theme for Comfortable Reading
+   Inspired by Traditional Islamic Manuscripts
+   ===================================================== */
+
+/* ============ COLOR PRIMITIVES ============ */
+:root {
+  /* Warm Amber/Gold - Primary accent (Islamic gold) */
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-200: #fde68a;
+  --color-amber-300: #fcd34d;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-amber-800: #92400e;
+  --color-amber-900: #78350f;
+
+  /* Warm Stone/Sand - Neutral backgrounds */
+  --color-stone-50: #fafaf9;
+  --color-stone-100: #f5f5f4;
+  --color-stone-200: #e7e5e4;
+  --color-stone-300: #d6d3d1;
+  --color-stone-400: #a8a29e;
+  --color-stone-500: #78716c;
+  --color-stone-600: #57534e;
+  --color-stone-700: #44403c;
+  --color-stone-800: #292524;
+  --color-stone-900: #1c1917;
+  --color-stone-950: #0c0a09;
+
+  /* Warm Teal - Secondary accent (calming) */
+  --color-teal-50: #f0fdfa;
+  --color-teal-100: #ccfbf1;
+  --color-teal-200: #99f6e4;
+  --color-teal-300: #5eead4;
+  --color-teal-400: #2dd4bf;
+  --color-teal-500: #14b8a6;
+  --color-teal-600: #0d9488;
+  --color-teal-700: #0f766e;
+  --color-teal-800: #115e59;
+  --color-teal-900: #134e4a;
+
+  /* Cream/Parchment - For reading surfaces */
+  --color-cream-50: #fefdfb;
+  --color-cream-100: #fdfbf7;
+  --color-cream-200: #faf6ed;
+  --color-cream-300: #f5edd8;
+  --color-cream-400: #ebe0c4;
+  --color-cream-500: #d9c9a3;
+
+  /* Deep Brown - For dark mode backgrounds */
+  --color-brown-900: #1a1612;
+  --color-brown-950: #0f0d0a;
+
+  /* Pure values */
+  --color-white: #ffffff;
+  --color-black: #000000;
+}
+
+/* ============ SEMANTIC TOKENS - DARK MODE (Default) ============ */
+/* Warm, cozy dark theme - like reading by candlelight */
+:root,
+[data-theme="dark"] {
+  /* Background layers - Warm dark browns */
+  --bg-base: #0f0d0a;
+  --bg-surface: #1a1612;
+  --bg-elevated: #241f1a;
+  --bg-card: #2a2420;
+  --bg-card-hover: #352e28;
+  --bg-overlay: rgba(15, 13, 10, 0.85);
+
+  /* Text hierarchy - Warm cream tones */
+  --text-primary: #faf6ed;
+  --text-secondary: #d9c9a3;
+  --text-muted: #a89f8a;
+  --text-disabled: #6b6358;
+  --text-inverse: #1a1612;
+
+  /* Arabic text - Soft cream for eye comfort */
+  --text-arabic: #fdfbf7;
+  --text-arabic-secondary: #f5edd8;
+
+  /* Brand colors - Default Green */
+  --brand-primary: #10b981;
+  --brand-primary-hover: #059669;
+  --brand-primary-active: #047857;
+  --brand-primary-soft: rgba(16, 185, 129, 0.12);
+  --brand-primary-glow: rgba(16, 185, 129, 0.2);
+  --brand-rgb: 16, 185, 129;
+  --brand-hover-rgb: 5, 150, 105;
+
+  /* Accent colors */
+  --accent-teal: #2dd4bf;
+  --accent-teal-soft: rgba(45, 212, 191, 0.1);
+  --accent-gold: #fbbf24;
+  --accent-gold-soft: rgba(251, 191, 36, 0.12);
+
+  /* Borders - Subtle warm tones */
+  --border-subtle: rgba(250, 246, 237, 0.05);
+  --border-default: rgba(250, 246, 237, 0.08);
+  --border-strong: rgba(250, 246, 237, 0.12);
+  --border-focus: var(--brand-primary);
+
+  /* Shadows - Warm undertones */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 30px var(--brand-primary-glow);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  /* Interactive states */
+  --interactive-hover: rgba(250, 246, 237, 0.05);
+  --interactive-active: rgba(250, 246, 237, 0.08);
+  --interactive-selected: var(--brand-primary-soft);
+
+  /* Status colors - Warmer variants */
+  --status-success: #22c55e;
+  --status-warning: #fbbf24;
+  --status-error: #f87171;
+  --status-info: #60a5fa;
+
+  /* Scrollbar */
+  --scrollbar-track: var(--bg-surface);
+  --scrollbar-thumb: rgba(250, 246, 237, 0.15);
+  --scrollbar-thumb-hover: var(--brand-primary);
+
+  /* Glassmorphism - Warm tint */
+  --glass-bg: rgba(42, 36, 32, 0.7);
+  --glass-bg-strong: rgba(42, 36, 32, 0.85);
+  --glass-border: rgba(250, 246, 237, 0.08);
+  --glass-blur: blur(16px);
+  --glass-blur-strong: blur(24px);
+}
+
+/* ============ SEMANTIC TOKENS - LIGHT MODE ============ */
+/* Warm cream/parchment theme - like reading on aged paper */
+[data-theme="light"] {
+  /* Background layers - Warm cream/parchment */
+  --bg-base: #F7F3E9;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F2EBDD;
+  --bg-overlay: rgba(247, 243, 233, 0.9);
+
+  /* Text hierarchy - Warm dark browns */
+  --text-primary: #0F3D2E;
+  --text-secondary: #4E5B54;
+  --text-muted: #7A847F;
+  --text-disabled: #a8a29e;
+  --text-inverse: #F7F3E9;
+
+  /* Arabic text - Deep brown for contrast */
+  --text-arabic: #0F3D2E;
+  --text-arabic-secondary: #2E3B35;
+
+  /* Brand colors - Default Green */
+  --brand-primary: #0F3D2E;
+  --brand-primary-hover: #0C3125;
+  --brand-primary-active: #09261D;
+  --brand-primary-soft: rgba(15, 61, 46, 0.1);
+  --brand-primary-glow: rgba(15, 61, 46, 0.15);
+  --brand-rgb: 15, 61, 46;
+  --brand-hover-rgb: 12, 49, 37;
+
+  /* Accent colors */
+  --accent-teal: #2B6B57;
+  --accent-teal-soft: rgba(43, 107, 87, 0.1);
+  --accent-gold: #C8A96B;
+  --accent-gold-soft: rgba(200, 169, 107, 0.12);
+
+  /* Borders - Subtle warm tones */
+  --border-subtle: rgba(15, 61, 46, 0.06);
+  --border-default: rgba(15, 61, 46, 0.12);
+  --border-strong: rgba(15, 61, 46, 0.18);
+  --border-focus: var(--brand-primary);
+
+  /* Shadows - Softer for light mode */
+  --shadow-sm: 0 1px 2px rgba(26, 22, 18, 0.06);
+  --shadow-md: 0 4px 12px rgba(26, 22, 18, 0.1);
+  --shadow-lg: 0 8px 24px rgba(26, 22, 18, 0.12);
+  --shadow-xl: 0 16px 48px rgba(26, 22, 18, 0.15);
+  --shadow-glow: 0 0 30px var(--brand-primary-glow);
+  --shadow-inner: inset 0 2px 4px rgba(26, 22, 18, 0.05);
+
+  /* Interactive states */
+  --interactive-hover: rgba(26, 22, 18, 0.04);
+  --interactive-active: rgba(26, 22, 18, 0.06);
+  --interactive-selected: var(--brand-primary-soft);
+
+  /* Status colors */
+  --status-success: #16a34a;
+  --status-warning: #d97706;
+  --status-error: #dc2626;
+  --status-info: #2563eb;
+
+  /* Scrollbar */
+  --scrollbar-track: var(--bg-base);
+  --scrollbar-thumb: rgba(26, 22, 18, 0.2);
+  --scrollbar-thumb-hover: var(--brand-primary);
+
+  /* Glassmorphism - Warm cream tint */
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg-strong: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(26, 22, 18, 0.08);
+  --glass-blur: blur(16px);
+  --glass-blur-strong: blur(24px);
+}
+
+/* ============ TYPOGRAPHY SCALE ============ */
+:root {
+  /* Font families */
+  --font-sans:
+    "Figtree", "Inter", "UthmanicHafsText", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-arabic: "UthmanicHafs", serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color: var(--text-arabic);
+}
+
+/* Reading container */
+.reading-container {
+  max-width: var(--reading-width-normal);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--brand-primary) 0%,
+    var(--accent-gold) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Warm glow effect */
+.warm-glow {
+  box-shadow:
+    0 0 40px var(--brand-primary-glow),
+    0 0 80px rgba(245, 158, 11, 0.1);
+}
+
+/* Soft card with warm shadow */
+.soft-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-all);
+}
+
+.soft-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Ornamental divider */
+.ornamental-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--text-muted);
+}
+
+.ornamental-divider::before,
+.ornamental-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-default),
+    transparent
+  );
+}
+
+/* Islamic pattern overlay */
+.pattern-overlay {
+  position: relative;
+}
+
+.pattern-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30L30 0z' fill='none' stroke='%23f59e0b' stroke-opacity='0.03' stroke-width='1'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* ============ COLOR THEMES ============ */
+
+/* -- THEME: AMBER -- */
+[data-color-theme="amber"] {
+  --brand-primary: #f59e0b;
+  --brand-primary-hover: #d97706;
+  --brand-primary-active: #b45309;
+  --brand-primary-soft: rgba(245, 158, 11, 0.12);
+  --brand-primary-glow: rgba(245, 158, 11, 0.2);
+  --brand-rgb: 245, 158, 11;
+  --brand-hover-rgb: 217, 119, 6;
+}
+
+[data-theme="light"][data-color-theme="amber"],
+[data-color-theme="amber"] [data-theme="light"] {
+  --brand-primary: #d97706;
+  --brand-primary-hover: #b45309;
+  --brand-primary-active: #92400e;
+  --brand-primary-soft: rgba(217, 119, 6, 0.1);
+  --brand-primary-glow: rgba(217, 119, 6, 0.15);
+  --brand-rgb: 217, 119, 6;
+  --brand-hover-rgb: 180, 83, 9;
+}
+
+/* -- THEME: GREEN -- */
+[data-color-theme="green"] {
+  --brand-primary: #10b981;
+  --brand-primary-hover: #059669;
+  --brand-primary-active: #047857;
+  --brand-primary-soft: rgba(16, 185, 129, 0.12);
+  --brand-primary-glow: rgba(16, 185, 129, 0.2);
+  --brand-rgb: 16, 185, 129;
+  --brand-hover-rgb: 5, 150, 105;
+}
+
+[data-theme="light"][data-color-theme="green"],
+[data-color-theme="green"] [data-theme="light"] {
+  --brand-primary: #059669;
+  --brand-primary-hover: #047857;
+  --brand-primary-active: #064e3b;
+  --brand-primary-soft: rgba(5, 150, 105, 0.1);
+  --brand-primary-glow: rgba(5, 150, 105, 0.15);
+  --brand-rgb: 5, 150, 105;
+  --brand-hover-rgb: 4, 120, 87;
+}

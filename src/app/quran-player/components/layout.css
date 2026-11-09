@@ -1,0 +1,13 @@
+/* Additional layout styles */
+.surahs-container {
+  margin-bottom: 2rem;
+}
+
+.surah-section:last-child {
+  margin-bottom: 1.5rem;
+}
+
+/* Ensure content has proper spacing */
+.page-header {
+  margin-bottom: 1.5rem;
+}
